@@ -55,7 +55,7 @@ Run the app locally in just a few steps:
    Go to [http://localhost:5000](http://localhost:5000)
 
 ## 📸 Screenshot
-![TripTeller UI](https://github.com/user-attachments/assets/e5e21c0f-c71b-4da7-9dab-8d6482edd97c)
+![TripTeller UI](https://github.com/user-attachments/assets/4a1724f0-2493-44ee-b8be-f33bbd30cca0)
 
 ## 🏆 Why It Stands Out
 - Combines LLM + Vision for **deeply contextual generation**
