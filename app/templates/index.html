@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TripTeller - AI Travel Story Generator</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    <body class="min-h-screen flex items-center justify-center p-4">
+        <main class="glass-card w-full max-w-4xl p-8 text-white">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight">TripTeller 📸✈️</h1>
+                <p class="text-gray-200 mt-2">Your AI-powered travel story generator.</p>
+            </div>
+            <form id="story-form" class="w-full">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="flex flex-col space-y-6">
+                        <div>
+                            <label class="text-lg font-semibold block mb-2">1. Upload Your Photo</label>
+                            <label for="photo" class="w-full h-32 border-2 border-dashed border-gray-400 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-white hover:bg-white/10 transition-colors">
+                                <span id="file-name" class="text-gray-300">Click to choose a file...</span>
+                            </label>
+                            <input type="file" id="photo" name="photo" accept="image/*" required>
+                        </div>
+                        <div>
+                            <label for="location" class="text-lg font-semibold block mb-2">2. Enter The Location</label>
+                            <input type="text" id="location" name="location" placeholder="e.g., Kuta Beach, Bali" required class="w-full p-3 bg-white/20 rounded-md border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/80 placeholder-gray-300">
+                        </div>
+                        <div>
+                            <label for="tone" class="text-lg font-semibold block mb-2">3. Choose The Story Tone</label>
+                            <select id="tone" name="tone" class="w-full p-3 bg-white/20 rounded-md border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/80 appearance-none" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 1rem center; background-size: 0.8em;">
+                                <option value="creative" class="text-black">Creative Story (Default)</option>
+                                <option value="funny" class="text-black">Funny</option>
+                                <option value="romantic" class="text-black">Romantic</option>
+                                <option value="horror" class="text-black">Horror</option>
+                                <option value="poetic" class="text-black">Poetic</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full text-lg font-bold py-3 px-6 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-md hover:from-purple-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white transition-all transform hover:scale-105"> Generate Story </button>
+                    </div>
+                    <div id="result-card" class="h-full min-h-[300px] bg-black/20 rounded-lg p-6 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold">Your Generated Story</h3>
+                            <button id="copy-button" type="button" class="hidden bg-white/20 text-white text-sm py-1 px-3 rounded-md hover:bg-white/30 transition-colors"> Copy </button>
+                        </div>
+                        <div id="loading-spinner" class="m-auto hidden">
+                            <svg class="animate-spin h-12 w-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </div>
+                        <div id="story-output" class="flex-grow overflow-y-auto pr-2">
+                            <p id="story-text" class="text-gray-200 leading-relaxed">Your story will appear here once it's generated. Choose a photo and let the magic begin!</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </main>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
+</html>
